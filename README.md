@@ -1,3 +1,49 @@
+# 🛒 E-Commerce Admin Dashboard
+
+A complete and responsive E-Commerce Admin Dashboard built with **React (Vite)** on the frontend and **Strapi** on the backend. The design is based on a professional Figma layout and includes modern UI and dynamic content management.
+
+---
+
+## 🚀 Tech Stack
+
+### Frontend:
+- [React](https://reactjs.org/)
+- [Vite](https://vitejs.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [ShadCN UI](https://ui.shadcn.dev/)
+- [React Router DOM](https://reactrouter.com/)
+- `@` alias configured for easy path access
+
+### Backend:
+- [Strapi v5](https://strapi.io/)
+- SQLite (default database)
+
+---
+
+## 🧱 Project Structure
+
+
+
+
+---
+
+## 🎨 Design
+
+Figma Design: [SAAS Dashboard – Figma](https://www.figma.com/)  
+*(This project is based on a Figma UI structure.)*
+
+---
+
+## ⚙️ Setup
+
+### Backend (Strapi):
+
+```bash
+cd e-commerce-api
+npm install
+npm run develop
+
+
 # 🚀 Getting started with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
