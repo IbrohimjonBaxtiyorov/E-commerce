@@ -5,10 +5,10 @@ import { useEffect, useState } from "react";
 import { validation2 } from "@/lib/utils";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
+import { setUser } from "@/lib/redux-toolkit/slices/commerse-slice";
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [user, setUser] = useState();
 
   useEffect(() => {
     const localUser = localStorage.getItem("user");
@@ -29,17 +29,21 @@ export default function Register() {
       e.target[target].focus();
       toast.error(message);
     } else {
-      setUser(sentData);
       try {
-        const req = await fetch("http://localhost:1337/api/members", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            data: sentData,
-          }),
-        })
+        const req = await fetch(
+          "http://localhost:1337/api/auth/local/register",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              username: sentData.userName,
+              email: sentData.email,
+              password: sentData.password,
+            }),
+          }
+        )
           .then((res) => res.json())
           .then((res) => {
             dispatch(setUser(res));
@@ -60,17 +64,6 @@ export default function Register() {
             <h3>Sign Up</h3>
           </div>
           <form className="flex flex-col gap-6 mt-7 " onSubmit={handleSubmit}>
-            <div className="flex flex-col gap-2">
-              <label htmlFor="fullName">Full Name</label>
-              <input
-                type="text"
-                id="fullName"
-                name="fullName"
-                placeholder="Jiangyu"
-                className="w-[348px] p-[15px] bg-[#F7F7F8] rounded-[10px]"
-              />
-            </div>
-
             <div className="flex flex-col gap-2">
               <label htmlFor="email">Email Address</label>
               <input

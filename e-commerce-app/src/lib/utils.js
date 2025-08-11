@@ -31,13 +31,6 @@ export function validation2(obj) {
     };
   }
 
-  if (obj.fullName.trim().length == 0) {
-    return {
-      target: "fullName",
-      message: "Fullname is required",
-    };
-  }
-
   if (obj.userName.trim().length == 0) {
     return {
       target: "userName",
