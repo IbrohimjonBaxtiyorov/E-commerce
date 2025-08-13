@@ -44,6 +44,7 @@ export default function Navbar() {
               const isActive = location.pathname === to;
               return (
                 <Link
+                  key={text}
                   to={to}
                   className={`flex  items-center gap-[13px] w-full py-[13px] ${
                     isActive

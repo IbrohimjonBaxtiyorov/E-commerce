@@ -47,6 +47,7 @@ export default function Register() {
           .then((res) => res.json())
           .then((res) => {
             dispatch(setUser(res));
+            localStorage.setItem("token", res.jwt);
             toast.success("User created successfully");
             navigate("/");
           });

@@ -1,0 +1,45 @@
+{
+  "kind": "collectionType",
+  "collectionName": "orders",
+  "info": {
+    "singularName": "order",
+    "pluralName": "orders",
+    "displayName": "Order"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "OrderNumber": {
+      "type": "uid"
+    },
+    "Total": {
+      "type": "decimal"
+    },
+    "CreatedAtt": {
+      "type": "date"
+    },
+    "IetmsFiled": {
+      "type": "component",
+      "component": "ecommerce.items",
+      "repeatable": true
+    },
+    "PaymentMethod": {
+      "type": "string"
+    },
+    "ShippingAddress": {
+      "type": "string"
+    },
+    "Statuses": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "processing",
+        "shipped",
+        "delivered",
+        "cancelled"
+      ]
+    }
+  }
+}

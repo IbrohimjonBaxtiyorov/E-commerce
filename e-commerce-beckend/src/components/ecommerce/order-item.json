@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_ecommerce_order_items",
+  "info": {
+    "displayName": "OrderItem",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    },
+    "Quanitiy": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "Price": {
+      "type": "integer",
+      "required": true,
+      "min": 0
+    }
+  },
+  "config": {}
+}

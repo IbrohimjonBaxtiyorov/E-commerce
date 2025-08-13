@@ -1,17 +1,23 @@
+import { useEffect, useState } from "react";
+
 export default function Dashboard() {
+  const [data, setData] = useState();
+  const token = localStorage.getItem("token");
+  useEffect(() => {
+    const req = fetch("http://localhost:1337/api/orders?populate=IetmsFiled", {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => setData(data.data))
+      .catch((err) => console.log(err));
+    }, []);
+    console.log("Data fetched:", data);
   return (
     <div className="pt-[30px]">
       <div className="text-[#030229] text-[22px] font-bold">Dashboard</div>
-      <div>
-        <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam
-          excepturi pariatur provident commodi labore explicabo eum est impedit
-          asperiores, vitae repellat quam. Optio obcaecati pariatur voluptas
-          corrupti, error, nihil voluptatibus repellendus cum quas eligendi
-          harum totam repellat neque minus non voluptate officiis rerum eaque
-          consectetur officia consequatur illum! Suscipit, optio?
-        </p>
-      </div>
+      <div></div>
     </div>
   );
 }

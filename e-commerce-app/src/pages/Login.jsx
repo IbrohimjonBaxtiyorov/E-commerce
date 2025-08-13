@@ -12,7 +12,7 @@ export default function Login() {
   useEffect(() => {
     const localUser = localStorage.getItem("user");
     if (localUser) {
-      navigate("/"); 
+      navigate("/");
     }
   }, [navigate]);
   const handleSubmit = async (e) => {
@@ -43,7 +43,7 @@ export default function Login() {
 
         if (res?.jwt) {
           localStorage.setItem("token", res.jwt);
-            localStorage.setItem("user", JSON.stringify(res.user))
+          localStorage.setItem("user", JSON.stringify(res.user));
           dispatch(setUser(res.user));
           navigate("/");
         } else {
