@@ -28,7 +28,7 @@ export default function App() {
             path="/"
             element={
               <PrivateRoute>
-                <div className="flex gap-[30px]">
+                <div className="flex h-full gap-[30px] ">
                   <Navbar />
                   <Dashboard />
                 </div>

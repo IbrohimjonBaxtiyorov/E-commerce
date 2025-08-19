@@ -26,15 +26,21 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="flex h-screen ">
+    <div className="flex h-[1030px] ">
       <div
-        className={`bg-white shadow-md transition-all duration-300   ${isExpanded ? "ml-0 mt-0 pt-[50px] rounded-0" : "ml-[30px] mt-[30px] pt-[35px] rounded-[10px]"} `}
+        className={`bg-white  transition-all duration-300   ${
+          isExpanded
+            ? "ml-0 mt-0 pt-[50px] rounded-0"
+            : "ml-[30px] mt-[30px] pt-[35px] rounded-[10px]"
+        } `}
         style={{ width: isExpanded ? "218px" : "80px" }}
       >
         <div>
           <div
             onClick={() => setIsExpanded((prev) => !prev)}
-            className={`flex items-center ${isExpanded ? "flex-row gap-4 justify-center" : "flex-col"}`}
+            className={`flex items-center ${
+              isExpanded ? "flex-row gap-4 justify-center" : "flex-col"
+            }`}
           >
             <img src={logo} alt="logo" className="w-[42px] h-[42px] " />
             <h2 className="text-[#030229] font-semibold text-[22px]">Base</h2>
