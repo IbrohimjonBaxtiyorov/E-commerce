@@ -15,7 +15,7 @@ import profilImg from "../assets/navbarImg/Profile.svg";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useDispatch } from "react-redux";
-import { deleteUser } from "@/lib/redux-toolkit/slices/commerse-slice";
+import { logout } from "@/lib/redux-toolkit/slices/commerse-slice";
 
 export default function Navbar() {
   const location = useLocation();
@@ -34,7 +34,8 @@ export default function Navbar() {
   ];
 
   function handleClick() {
-    dispatch(deleteUser());
+    dispatch(logout());
+    // window.location.reload()
   }
 
   return (

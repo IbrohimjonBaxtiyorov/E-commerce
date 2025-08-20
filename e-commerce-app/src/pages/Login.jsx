@@ -44,7 +44,7 @@ export default function Login() {
         if (res?.jwt) {
           localStorage.setItem("token", res.jwt);
           localStorage.setItem("user", JSON.stringify(res.user));
-          dispatch(setUser(res.user));
+          dispatch(setUser({ user: res.user, token: res.jwt }));
           navigate("/");
         } else {
           toast.error(res?.error?.message || "Login failed");

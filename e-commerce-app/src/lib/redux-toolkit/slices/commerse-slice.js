@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: 0,
+  token: localStorage.getItem('token'),
   user: JSON.parse(localStorage.getItem("user")) || null,
 };
 
@@ -10,17 +11,17 @@ export const commerSlice = createSlice({
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.user = action.payload;
-      localStorage.setItem("user", JSON.stringify(state.user));
+      state.user = action.payload.user;
+      state.token = action.payload.token;
     },
-    deleteUser: (state) => {
+    logout: (state) => {
       state.user = null;
-      localStorage.removeItem("user");
-      localStorage.removeItem("token");
+      state.token = null;
+      localStorage.clear()
     },
   },
 });
 
-export const { setUser, deleteUser } = commerSlice.actions;
+export const { setUser, logout } = commerSlice.actions;
 
 export default commerSlice.reducer;
