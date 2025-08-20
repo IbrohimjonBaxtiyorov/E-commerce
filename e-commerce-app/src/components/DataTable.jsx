@@ -2,7 +2,6 @@ import {
   Table,
   TableBody,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
@@ -13,6 +12,7 @@ import oil from "../assets/oil.svg";
 import dress from "../assets/dress.svg";
 import camera from "../assets/camera.svg";
 import parfum from "../assets/parfum.svg";
+import { useSelector } from "react-redux";
 
 const invoices = [
   {
@@ -59,7 +59,7 @@ const tableHeaders = [
 
 export function DataTable() {
   return (
-    <div className="bg-[#FFFFFF] rounded-[10px] w-full max-w-[708px] mt-7">
+    <div className={`bg-[#FFFFFF] min-h-[335px] rounded-[10px] w-full `}>
       <div className=" rounded-[10px] p-6 ">
         <div className="flex items-center justify-between mb-6">
           <h3 className="text-[#030229] font-bold opacity-70 ">
@@ -74,9 +74,10 @@ export function DataTable() {
                 return (
                   <TableHead
                     key={label}
-                    className={
-                      i >= tableHeaders.length - 2 ? "text-right" : "text-left"
-                    }
+                    className={`
+                     ${
+                       i >= tableHeaders.length - 2 ? "text-right" : "text-left"
+                     } text-[12px]`}
                   >
                     {label}{" "}
                     <img src={arrow} className="inline-block ml-3" alt="" />
@@ -88,23 +89,27 @@ export function DataTable() {
           <TableBody className={""}>
             {invoices.map((invoice, i) => (
               <TableRow
-                className={`border-none ${
+                className={`border-none text-[12px] ${
                   i % 2 == 0 ? "bg-[#FAFAFB]" : ""
                 } rounded `}
                 key={invoice.invoice}
               >
-                <TableCell className="font-medium">{invoice.invoice}</TableCell>
+                <TableCell className="text-[12px]">{invoice.invoice}</TableCell>
                 <TableCell>
-                  <img src={invoice.img} className="inline-block mr-3" alt="" />
+                  <img
+                    src={invoice.img}
+                    className="inline-block text-[12px]  mr-3"
+                    alt=""
+                  />
                   {invoice.name}
                 </TableCell>
-                <TableCell>{invoice.Price}</TableCell>
-                <TableCell className=" flex items-end justify-center">
-                  <div className="w-[61px] bg-[#EAF9FD] text-[#26C0E2] px-[21px] py-[7px] rounded-[8px]">
+                <TableCell className={"text-[12px]"}>{invoice.Price}</TableCell>
+                <TableCell className=" flex items-end justify-center text-[12px] 2xl:justify-end">
+                  <div className="w-[61px] bg-[#EAF9FD] text-[#26C0E2] text-[12px] px-[21px] py-[7px] rounded-[8px]">
                     {invoice.order}
                   </div>
                 </TableCell>
-                <TableCell className={"text-right"}>
+                <TableCell className={"text-right text-[12px]"}>
                   {invoice.totalAmount}
                 </TableCell>
               </TableRow>

@@ -1,5 +1,5 @@
-import { configureStore } from '@reduxjs/toolkit'
-import  comerslice from "./slices/commerse-slice.js"
+import { configureStore } from "@reduxjs/toolkit";
+import commerseReducer from "./slices/commerse-slice.js";
 export const store = configureStore({
-  reducer: {comerslice},
-})
+  reducer: { commerce: commerseReducer },
+});

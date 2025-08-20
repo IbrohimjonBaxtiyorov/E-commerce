@@ -7,6 +7,7 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import menu from "../assets/Menu.svg";
+import { useSelector } from "react-redux";
 
 const chartData = [
   { hour: "10AM", desktop: 2780 },
@@ -28,8 +29,11 @@ const chartConfig = {
 };
 
 export function Chart() {
+
   return (
-    <Card className=" h-[402px] border-none shadow-none ">
+    <Card
+      className={` min-h-[408px] border-none shadow-none`}
+    >
       <CardHeader className="flex items-center justify-between ">
         <CardTitle className="text-[#030229] font-bold opacity-70">
           Reports
@@ -44,7 +48,7 @@ export function Chart() {
             margin={{
               left: 12,
               right: 12,
-              bottom:0,
+              bottom: 0,
             }}
           >
             <defs>

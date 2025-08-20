@@ -18,8 +18,6 @@ import {
 import { useMemo } from "react";
 import menu from "../assets/Menu.svg";
 
-export const description = "A donut chart with text";
-
 const chartData = [
   { browser: "Sale", Transactions: 30, fill: "#5B93FF" },
   { browser: "Other", Transactions: 20, fill: "#E5E5E5" },
@@ -52,7 +50,7 @@ export function MyPieChart() {
   }, []);
 
   return (
-    <Card className="flex flex-col w-[430px] h-[402px] border-none shadow-none">
+    <Card className="flex flex-col w-[430px] h-[418px]  border-none shadow-none 2xl:w-[500px]">
       <CardHeader className=" pb-0 flex items-center justify-between">
         <CardTitle className="text-[#030229] font-bold opacity-70">
           Analytics
@@ -119,7 +117,9 @@ export function MyPieChart() {
                   style={{ backgroundColor: fill }}
                   className={` w-[15px] h-[15px] rounded-[5px]`}
                 ></span>
-                <p className="text-[#030229] opacity-70 font-semibold">{browser}</p>
+                <p className="text-[#030229] opacity-70 font-semibold">
+                  {browser}
+                </p>
               </div>
             );
           })}

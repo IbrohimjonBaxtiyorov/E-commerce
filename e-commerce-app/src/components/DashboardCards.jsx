@@ -32,12 +32,12 @@ export default function DashboardCards() {
   ];
 
   return (
-    <div className="flex items-center justify-between pt-[38px]">
+    <div className="flex items-center justify-between gap-5 w-full">
       {CardData.map(({ img, background, text, number }) => {
         return (
           <div
             key={background}
-            className="flex items-center gap-[23px] bg-[#FFFFFF] rounded-[10px] p-7 pr-[63px]"
+            className="w-full flex items-center gap-[23px] bg-[#FFFFFF] rounded-[10px] p-7 pr-[63px]"
           >
             <div
               className={`rounded-[50%] p-5`}

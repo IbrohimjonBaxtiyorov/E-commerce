@@ -2,10 +2,11 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   value: 0,
-  user:JSON.parse(localStorage.getItem("user"))||null
+  user: JSON.parse(localStorage.getItem("user")) || null,
+  nav: false,
 };
 
-export const counterSlice = createSlice({
+export const commerSlice = createSlice({
   name: "commers",
   initialState,
   reducers: {
@@ -13,9 +14,15 @@ export const counterSlice = createSlice({
       state.user = action.payload;
       localStorage.setItem("user", JSON.stringify(state.user));
     },
+    toggleNav: (state) => {
+      state.nav = !state.nav;
+    },
+    setNav: (state, action) => {
+      state.nav = action.payload;
+    },
   },
 });
 
-export const { setUser } = counterSlice.actions;
+export const { setUser, toggleNav, setNav } = commerSlice.actions;
 
-export default counterSlice.reducer;
+export default commerSlice.reducer;
