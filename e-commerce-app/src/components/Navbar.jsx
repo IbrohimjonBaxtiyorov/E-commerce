@@ -1,25 +1,30 @@
 import { useState } from "react";
 import logo from "../assets/logo.svg";
 
-import DashboardIcon from "../assets/navbarImg/Category.svg?react";
-import AnalyticsIcon from "../assets/navbarImg/Chart.svg?react";
-import InvoiceIcon from "../assets/navbarImg/incoise.svg?react";
-import DocumentIcon from "../assets/navbarImg/Document.svg?react";
-import CalendarIcon from "../assets/navbarImg/Calendar.svg?react";
-import MessageIcon from "../assets/navbarImg/messages.svg?react";
-import NotificationIcon from "../assets/navbarImg/Notification.svg?react";
-import SettingIcon from "../assets/navbarImg/Setting.svg?react";
-
+import DashboardIcon from "./Icons/Dashboard";
+import ChatIcon from "./Icons/ChatIcon";
+import InvoiceIcon from "./Icons/InvoiceIcon";
+import DocumentIcon from "./Icons/DocumentIcon";
+import CalendarIcon from "./Icons/CalendarIcon";
+import MessageIcon from "./Icons/MessageIcon";
+import NotificationIcon from "./Icons/NotificationIcon";
+import SettingIcon from "./Icons/SettingIcon";
+import LogOut from "../assets/navbarImg/Logout.svg";
 import navBg from "../assets/navbarImg/nav-bg.svg";
-import { Link, useLocation } from "react-router-dom";
+import profilImg from "../assets/navbarImg/Profile.svg";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Button } from "./ui/button";
+import { useDispatch } from "react-redux";
+import { deleteUser } from "@/lib/redux-toolkit/slices/commerse-slice";
 
 export default function Navbar() {
   const location = useLocation();
   const [isExpanded, setIsExpanded] = useState(false);
+  const dispatch = useDispatch();
 
   const navData = [
     { Icon: DashboardIcon, text: "Dashboard", to: "/" },
-    { Icon: AnalyticsIcon, text: "Analytics", to: "/analytics" },
+    { Icon: ChatIcon, text: "Analytics", to: "/analytics" },
     { Icon: InvoiceIcon, text: "Invoice", to: "/invoice" },
     { Icon: DocumentIcon, text: "Schedule", to: "/schedule" },
     { Icon: CalendarIcon, text: "Calendar", to: "/calendar" },
@@ -28,10 +33,14 @@ export default function Navbar() {
     { Icon: SettingIcon, text: "Settings", to: "/settings" },
   ];
 
+  function handleClick() {
+    dispatch(deleteUser());
+  }
+
   return (
     <div className="flex h-[1035px] ">
       <div
-        className={`bg-white  transition-all duration-300   ${
+        className={`bg-white  transition-all duration-300 flex flex-col  justify-between  pb-[30px] ${
           isExpanded
             ? "ml-0 mt-0 pt-[50px] rounded-0"
             : "ml-[30px] mt-[30px] pt-[35px] rounded-[10px]"
@@ -64,7 +73,10 @@ export default function Navbar() {
                   ) : (
                     ""
                   )}
-                  <Icon className={` text-[#605BFF] w-5 h-5 `} />
+                  <Icon
+                    color={`${isActive ? "#605BFF" : "#9a9aa9"}`}
+                    className={` text-[#605BFF] w-5 h-5 `}
+                  />
 
                   {isExpanded ? (
                     <h3
@@ -80,6 +92,42 @@ export default function Navbar() {
                 </Link>
               );
             })}
+          </div>
+        </div>
+
+        <div
+          className={`flex ${
+            isExpanded ? "" : "flex-col"
+          } items-center gap-4 justify-center`}
+        >
+          <div>
+            <img src={profilImg} width={45} height={43} alt="" />
+          </div>
+          <div
+            className={`flex items-center justify-center ${
+              isExpanded ? "gap-7" : ""
+            }`}
+          >
+            <div>
+              {isExpanded ? (
+                <h2 className="text-[#000000] font-semibold text-[12px]">
+                  John doe
+                </h2>
+              ) : (
+                ""
+              )}{" "}
+              {isExpanded ? (
+                <p className="text-[#000000] text-[10px] ">Free Account</p>
+              ) : (
+                ""
+              )}
+            </div>
+            <Button
+              onClick={handleClick}
+              variant="outline border-none cursor-pointer "
+            >
+              <img src={LogOut} alt="log out img" />
+            </Button>
           </div>
         </div>
       </div>
