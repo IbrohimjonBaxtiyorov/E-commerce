@@ -7,7 +7,6 @@ import {
   ChartTooltipContent,
 } from "@/components/ui/chart";
 import menu from "../assets/Menu.svg";
-import { useSelector } from "react-redux";
 
 const chartData = [
   { hour: "10AM", desktop: 2780 },
