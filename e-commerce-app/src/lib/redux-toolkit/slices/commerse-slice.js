@@ -4,6 +4,7 @@ const initialState = {
   value: 0,
   token: localStorage.getItem('token'),
   user: JSON.parse(localStorage.getItem("user")) || null,
+  analiyticUser:[]
 };
 
 export const commerSlice = createSlice({
@@ -19,9 +20,12 @@ export const commerSlice = createSlice({
       state.token = null;
       localStorage.clear()
     },
+    setAnaliyticUser:(state,{payload})=>{
+     state.analiyticUser=[...state.analiyticUser,payload]
+    }
   },
 });
 
-export const { setUser, logout } = commerSlice.actions;
+export const { setUser, logout ,setAnaliyticUser} = commerSlice.actions;
 
 export default commerSlice.reducer;

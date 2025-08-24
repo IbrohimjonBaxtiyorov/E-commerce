@@ -39,7 +39,7 @@ export default function App() {
             path="/analytics"
             element={
               <PrivateRoute>
-                <div className="flex gap-[30px]">
+                <div className="flex h-full gap-[30px]">
                   <Navbar />
                   <Analytics />
                 </div>

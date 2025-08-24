@@ -35,7 +35,6 @@ export default function Navbar() {
 
   function handleClick() {
     dispatch(logout());
-    // window.location.reload()
   }
 
   return (
