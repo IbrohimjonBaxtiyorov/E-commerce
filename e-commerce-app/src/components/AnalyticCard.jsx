@@ -130,7 +130,7 @@ export default function AnalyticCard() {
         {analiyticUsers.map(({ name, email, gender, phone, img }) => (
           <div
             key={name}
-            className="grid grid-cols-[1fr_2fr_1fr_1fr_auto] items-center bg-[#FFFFFF] p-[15px] rounded-[10px] "
+            className="grid grid-cols-[1fr_2fr_1fr_1fr_auto] gap-2 items-center bg-[#FFFFFF] p-[15px] rounded-[10px] "
           >
             <p className="text-[#030229] text-[14px] flex items-center gap-[11px]">
               <img src={img} width={30} height={30} alt="" /> {name}
