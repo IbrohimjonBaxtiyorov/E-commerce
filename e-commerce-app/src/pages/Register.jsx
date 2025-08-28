@@ -31,7 +31,7 @@ export default function Register() {
       toast.error(message);
     } else {
       try {
-        const req = await fetch(`${baseUrl}/api/auth/local/register`, {
+        const res = await fetch(`${baseUrl}/api/auth/local/register`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -41,14 +41,15 @@ export default function Register() {
             email: sentData.email,
             password: sentData.password,
           }),
-        })
-          .then((res) => res.json())
-          .then((res) => {
-            dispatch(setUser(res));
-            localStorage.setItem("token", res.jwt);
-            toast.success("User created successfully");
-            navigate("/");
-          });
+        }).then((res) => res.json());
+        if (res?.jwt) {
+          localStorage.setItem("token", res.jwt);
+          localStorage.setItem("user", JSON.stringify(res.user));
+          dispatch(setUser({ user: res.user, token: res.jwt }));
+          navigate("/");
+        } else {
+          toast.error(res?.error?.message || "Login failed");
+        }
       } catch (error) {
         toast.error(error.message);
       }
