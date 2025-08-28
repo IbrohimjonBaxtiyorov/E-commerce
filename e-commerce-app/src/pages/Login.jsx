@@ -16,6 +16,7 @@ export default function Login() {
       navigate("/");
     }
   }, [navigate]);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
