@@ -6,6 +6,7 @@ import { validation } from "@/lib/utils";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/lib/redux-toolkit/slices/commerse-slice";
+const baseUrl=import.meta.env.VITE_API_URL
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,7 +34,7 @@ export default function Login() {
         password: sentData.password,
       };
       try {
-        const res = await fetch("http://localhost:1337/api/auth/local", {
+        const res = await fetch(`${baseUrl}/api/auth/local`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

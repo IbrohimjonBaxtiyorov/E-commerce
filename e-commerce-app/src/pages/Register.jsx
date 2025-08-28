@@ -6,6 +6,7 @@ import { validation2 } from "@/lib/utils";
 import { toast } from "sonner";
 import { useDispatch } from "react-redux";
 import { setUser } from "@/lib/redux-toolkit/slices/commerse-slice";
+const baseUrl = import.meta.env.VITE_API_URL;
 export default function Register() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,20 +31,17 @@ export default function Register() {
       toast.error(message);
     } else {
       try {
-        const req = await fetch(
-          "http://localhost:1337/api/auth/local/register",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              username: sentData.userName,
-              email: sentData.email,
-              password: sentData.password,
-            }),
-          }
-        )
+        const req = await fetch(`${baseUrl}/api/auth/local/register`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            username: sentData.userName,
+            email: sentData.email,
+            password: sentData.password,
+          }),
+        })
           .then((res) => res.json())
           .then((res) => {
             dispatch(setUser(res));
